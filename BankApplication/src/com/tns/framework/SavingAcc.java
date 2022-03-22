@@ -1,25 +1,51 @@
 package com.tns.framework;
 
 public abstract class SavingAcc extends BankAcc {
-	private boolean isSalaried;
+	public static boolean isSalaried;
 
-	private static final float MINBAL = 1000;
+	protected static final float MINBAL = 0;
 
-	public SavingAcc(int accNo, String accName, float accBal, boolean isSalaried) {
+	public SavingAcc() {
+
+	}
+
+	public SavingAcc(int accNo, String accName, float accBal, boolean isSalaried, float MINBAL) {
 		super(accNo, accName, accBal);
-		this.isSalaried = isSalaried;
+		this.setSalaried(isSalaried);
 	}
 
 	@Override
 	public void withdraw(float withdrawal) {
 
-		super.withdraw(withdrawal);
+		if (accBal >= withdrawal) {
+
+			System.out.println(accNo + " " + accName + " " + " withdrawn :" + " " + withdrawal);
+			accBal -= withdrawal;
+			System.out.println("Balance after withdrawal:" + accBal);
+
+		} else {
+			System.out.println(accName + " you cannot withdraw " + withdrawal);
+		}
+
+	}
+
+	public boolean isSalaried() {
+		return isSalaried;
+	}
+
+	public void setSalaried(boolean isSalaried) {
+		SavingAcc.isSalaried = isSalaried;
+	}
+
+	public float getMinbal() {
+		return MINBAL;
 	}
 
 	@Override
 	public String toString() {
-		return "SavingAcc [isSalaried=" + isSalaried + ", toString()=" + super.toString() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + "]";
+		return "SavingAcc [accBal=" + accBal + ", isSalaried()=" + isSalaried() + ", getAccBal()=" + getAccBal()
+				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
 	}
 
 }

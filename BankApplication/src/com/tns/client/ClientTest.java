@@ -10,17 +10,28 @@ import com.tns.framework.SavingAcc;
 public class ClientTest {
 
 	public static void main(String[] args) {
-	BankFactory bf=new MMBankFactory();
-	SavingAcc sa=new MMSavingAcc(2012456, "Mk Younus",10000, true);
-	CurrentAcc ca=new MMCurrentAcc(2022142,"Rohit Sharma",20000,25000);
-	
-	//sa.deposit(2000);
-	ca.withdraw(15000);
-	ca.deposit(10000);
-	System.out.println(ca.toString());
-	
-	
-	
+
+		MMBankFactory mmfactory = new MMBankFactory();
+		mmfactory.getNewCurrentAccount(101, "Yunus", 40000, 25000);
+		mmfactory.getNewSavingAccount(201, "Sam", 10000, true, 1000);
+
+		MMSavingAcc mmSav = new MMSavingAcc();
+		mmSav.getAccNo();
+		mmSav.getAccName();
+		mmSav.getMinbal();
+		mmSav.getAccBal();
+
+		mmSav.toString();
+		mmSav.deposit(20000);
+		mmSav.withdraw(200);
+
+		MMCurrentAcc mmCurr = new MMCurrentAcc(291, "Rohit", 30000, 40000);
+		mmCurr.getAccBal();
+		mmCurr.getAccName();
+		mmCurr.getCreditlimit();
+		mmCurr.withdraw(15000);
+		mmCurr.toString();
+
 	}
 
 }
